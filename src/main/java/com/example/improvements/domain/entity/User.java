@@ -1,5 +1,6 @@
 package com.example.improvements.domain.entity;
 
+import com.example.improvements.domain.constant.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class User {
 
     private String username;
     private String password;
+    private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Post> posts;
