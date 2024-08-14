@@ -1,6 +1,5 @@
 package com.example.improvements.domain.entity;
 
-import com.example.improvements.domain.dto.PostDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,11 +23,4 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    public static Post toPostDTO(PostDTO postDTO){
-        return Post.builder()
-                .title(postDTO.getTitle())
-                .content(postDTO.getContent())
-                .build();
-    }
 }
