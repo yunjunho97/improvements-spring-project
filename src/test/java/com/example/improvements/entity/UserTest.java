@@ -1,5 +1,6 @@
 package com.example.improvements.entity;
 
+import com.example.improvements.domain.constant.Role;
 import com.example.improvements.domain.entity.User;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -19,5 +20,6 @@ public class UserTest {
         assertThat(user.getUsername()).isEqualTo("testUser");
         assertThat(user.getPassword()).isEqualTo("password");
         assertThat(user.getEmail()).isEqualTo("test@gmail.com");
+        assertThat(user.getRole()).isEqualTo(Role.ROLE_USER);
     }
 }

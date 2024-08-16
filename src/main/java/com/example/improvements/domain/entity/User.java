@@ -34,14 +34,14 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Post> posts;
 
-    private User(String username, String password, String email) {
+    private User(String username, String password, String email, Role role) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.role = Role.ROLE_USER;
+        this.role = role;
     }
 
     public static User createUser(String username, String password, String email) {
-        return new User(username, password, email);
+        return new User(username, password, email, Role.ROLE_USER);
     }
 }
