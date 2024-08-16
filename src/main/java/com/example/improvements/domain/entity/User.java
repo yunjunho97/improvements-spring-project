@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "users")
 @Getter
 @NoArgsConstructor
-public class User implements UserDetails {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,14 +43,5 @@ public class User implements UserDetails {
 
     public static User createUser(String username, String password, String email) {
         return new User(username, password, email);
-    }
-
-    /**
-     * 사용자의 권한 정보 반환
-     * @return role
-     */
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(role.name()));
     }
 }
