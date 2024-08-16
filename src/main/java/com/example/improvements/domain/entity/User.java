@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "users")
 @Getter
 @NoArgsConstructor
-public class User implements UserDetails {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,23 +34,14 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Post> posts;
 
-    private User(String username, String password, String email) {
+    private User(String username, String password, String email, Role role) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.role = Role.ROLE_USER;
+        this.role = role;
     }
 
     public static User createUser(String username, String password, String email) {
-        return new User(username, password, email);
-    }
-
-    /**
-     * 사용자의 권한 정보 반환
-     * @return role
-     */
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(role.name()));
+        return new User(username, password, email, Role.ROLE_USER);
     }
 }
