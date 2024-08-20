@@ -1,9 +1,10 @@
 package com.example.improvements.domain.dto;
 
 import com.example.improvements.domain.entity.User;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Builder
 public class UserJoinDTO {
